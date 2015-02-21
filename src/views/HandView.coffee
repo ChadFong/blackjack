@@ -4,7 +4,7 @@ class window.HandView extends Backbone.View
   playerButtons: "<button class='hit-button'>Hit</button> <button class='stand-button'>Stand</button>"
 
   template: _.template "<h2>
-                          <% if(isDealer){ %>Dealer\'s Score: <%}
+                          <% if(isDealer){ %>Dealer\'s Score: <span class='score'></span> <%}
                                 else{ %>Your Score: <span class='score'></span>
                                   <br><br>
                                   <%= this.playerButtons %>
@@ -18,9 +18,9 @@ class window.HandView extends Backbone.View
       @playerButtons = "<button class='reset-button'>Try Again?</button>"
       @render true
 
-
+#TODO: Slim down to only the difference being decided by if
   render: (bust) ->
-    unless bust is true
+    if bust is undefined
       @$el.children().detach()
       @$el.html @template @collection
       @$el.append @collection.map (card) ->

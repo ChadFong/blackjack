@@ -1,5 +1,5 @@
 class window.GameView extends Backbone.View
-      # <button class="hit-button">Hit</button> <button class="stand-button">Stand</button><button class="reset-button">Try Again?</button>
+
   template: _.template '
     <section class="game">
       <div class="player-hand-container"></div>
@@ -16,7 +16,6 @@ class window.GameView extends Backbone.View
     @render()
 
   render: ->
-    # console.log("GameView's this: " @)
     @$el.children().detach()
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
