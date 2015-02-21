@@ -4,8 +4,11 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
+    # if not @get 'busted'
     @add(@deck.pop())
-    if @minScore() > 21 then console.log('busted!')
+    if @minScore() > 21 then @trigger 'bust'
+    # else
+    #   console.log('You can\'t hit, you busted!')
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1

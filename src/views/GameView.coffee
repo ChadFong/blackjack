@@ -1,7 +1,7 @@
 class window.GameView extends Backbone.View
+      # <button class="hit-button">Hit</button> <button class="stand-button">Stand</button><button class="reset-button">Try Again?</button>
   template: _.template '
     <section class="game">
-      <button class="hit-button">Hit</button> <button class="stand-button">Stand</button>
       <div class="player-hand-container"></div>
       <div class="dealer-hand-container"></div>
     </section>
@@ -10,6 +10,7 @@ class window.GameView extends Backbone.View
   events:
     'click .hit-button': -> @model.get('playerHand').hit()
     'click .stand-button': -> @model.get('playerHand').stand()
+    'click .reset-button': -> console.log('Reset!')
 
   initialize: ->
     @render()
