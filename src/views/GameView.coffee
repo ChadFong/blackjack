@@ -1,10 +1,11 @@
 class window.GameView extends Backbone.View
 
+  tagName: 'section'
+  className: 'game'
+
   template: _.template '
-    <section class="game">
-      <div class="player-hand-container"></div>
-      <div class="dealer-hand-container"></div>
-    </section>
+    <div class="player-hand-container"></div>
+    <div class="dealer-hand-container"></div>
   '
 
   events:

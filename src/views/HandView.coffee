@@ -25,11 +25,11 @@ class window.HandView extends Backbone.View
       @$el.html @template @collection
       @$el.append @collection.map (card) ->
         new CardView(model: card).$el
-      @$('.score').text @collection.scores()[0]
+      @$('.score').text @collection.bestScore()
     else
       @$el.children().detach()
       @$el.html @template @collection
       @$el.append @collection.map (card) ->
         new CardView(model: card).$el
-      @$('.score').text "Busted! (" + @collection.scores()[0] + ")"
+      @$('.score').text "Busted! (" + @collection.bestScore() + ")"
     

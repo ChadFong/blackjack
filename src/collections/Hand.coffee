@@ -20,6 +20,13 @@ class window.Hand extends Backbone.Collection
     score + if card.get 'revealed' then card.get 'value' else -1000
   , 0
 
+  bestScore: -> 
+    potenScore = @scores()
+    if potenScore[1] > 21
+      potenScore[0]
+    else
+      potenScore[1]
+
   scores: ->
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.

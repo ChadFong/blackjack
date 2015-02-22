@@ -1,3 +1,3 @@
-# console.log("main's @$el: ", $el)
-window.Thing = new AppView(model: new App())
-Thing.$el.appendTo 'body'
+window.App = new App()
+new UtilitiesView(model: window.App).$el.appendTo 'body'
+window.AppView = new AppView(model: window.App)
