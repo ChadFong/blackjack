@@ -5,9 +5,9 @@ class window.HandView extends Backbone.View
 
   template: _.template "<h2>
                           <% if(isDealer){ %>Dealer\'s Score: <span class='score'></span> <%}
-                                else{ %>Your Score: <span class='score'></span>
-                                  <br><br>
-                                  <%= this.playerButtons %>
+                                else{ %>
+                                <%= this.playerButtons %><br>
+                                Your Score: <span class='score'></span>
                              <% } %>
                         </h2>"
 
@@ -15,8 +15,11 @@ class window.HandView extends Backbone.View
     @collection.on 'add remove change', => @render()
     @render()
     @collection.on 'bust', =>
-      @playerButtons = "<button class='reset-button'>Try Again?</button>"
+      @playerButtons = ""
       @render true
+    @collection.on 'stand', =>
+      @playerButtons = ""
+      @render()
 
 #TODO: Slim down to only the difference being decided by if
   render: (bust) ->

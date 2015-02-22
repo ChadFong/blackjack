@@ -22,7 +22,9 @@ class window.Hand extends Backbone.Collection
 
   bestScore: -> 
     potenScore = @scores()
-    if potenScore[1] > 21
+    if potenScore[0] < 0
+      '?'
+    else if potenScore[1] > 21
       potenScore[0]
     else
       potenScore[1]
@@ -31,9 +33,6 @@ class window.Hand extends Backbone.Collection
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.
     # when there is an ace, it offers you two scores - the original score, and score + 10.
-    if @minScore() < 0 
-      ['?'] 
-    else 
-      [@minScore(), @minScore() + 10 * @hasAce()]
+    [@minScore(), @minScore() + 10 * @hasAce()]
     
 
