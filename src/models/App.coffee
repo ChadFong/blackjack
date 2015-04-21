@@ -14,3 +14,7 @@ class window.App extends Backbone.Model
       @set('wins', @get('wins') + 1)
     @get('game').on 'tie', =>
       @set('ties', @get('ties') + 1)
+
+  replay: ->
+    console.log('App Model')
+    @trigger 'replay'

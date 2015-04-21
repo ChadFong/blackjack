@@ -11,7 +11,6 @@ class window.GameView extends Backbone.View
   events:
     'click .hit-button': -> @model.get('playerHand').hit()
     'click .stand-button': -> @model.get('playerHand').stand()
-    'click .reset-button': -> console.log('Reset!')
 
   initialize: ->
     @render()

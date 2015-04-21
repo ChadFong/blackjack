@@ -14,6 +14,10 @@ class window.UtilitiesView extends Backbone.View
 
   resetButton: ''
 
+  events: 
+    'click .reset-button': ->
+      @model.replay()
+
   initialize: =>
     @render()
     @model.on 'change', @render
@@ -31,12 +35,12 @@ class window.UtilitiesView extends Backbone.View
       @resetButton = "<button class='reset-button'>Try Again?</button>"
       @render()
 
-  gameOver: (event) =>
-    switch event
-      when 'win' then @message = "You Win!" ; @resetButton = "<button class='reset-button'>Play Again?</button>"
-      when 'loss' then @message = "You lost" ; @resetButton = "<button class='reset-button'>Try Again?</button>"
-      when 'tie' then @message = "Tie!" ; @resetButton = "<button class='reset-button'>Try Again?</button>"
-    @render()
+  # gameOver: (event) =>
+  #   switch event
+  #     when 'win' then @message = "You Win!" ; @resetButton = "<button class='reset-button'>Play Again?</button>"
+  #     when 'loss' then @message = "You lost" ; @resetButton = "<button class='reset-button'>Try Again?</button>"
+  #     when 'tie' then @message = "Tie!" ; @resetButton = "<button class='reset-button'>Try Again?</button>"
+  #   @render()
 
   render: =>
     @$el.children().detach()
